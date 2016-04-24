@@ -10,7 +10,7 @@
     },
     {
       "imageUrl": "http://assets.chrisblunt.com/wp-content/uploads/2010/08/brew.jpg",
-      "comment": "Brew + Biscuit"
+      "comment": "Brew + Biscuit: http://mooone.co/"
     },
     {
       "imageUrl": "http://assets.chrisblunt.com/wp-content/uploads/2013/05/business_cards.jpg",
