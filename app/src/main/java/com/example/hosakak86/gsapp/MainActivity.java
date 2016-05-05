@@ -2,6 +2,9 @@ package com.example.hosakak86.gsapp;
 //起動時に実行されるアクティビティーです。１つの画面に１つのアクティビティーが必要です。
 //どのアクティビティーが起動時に実行されるのかはAndroidManifestに記述されています。
 
+        import android.content.Context;
+        import android.content.Intent;
+        import android.content.SharedPreferences;
         import android.os.Bundle;
         import android.support.v7.app.ActionBarActivity;
         import android.view.Menu;
@@ -12,6 +15,7 @@ package com.example.hosakak86.gsapp;
         import com.android.volley.Response;
         import com.android.volley.VolleyError;
         import com.android.volley.toolbox.JsonObjectRequest;
+        import com.kii.cloud.storage.KiiUser;
 
         import org.json.JSONArray;
         import org.json.JSONException;
@@ -30,6 +34,22 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        //KiiCloudでのログイン状態を取得します。nullの時はログインしていない。
+        KiiUser user = KiiUser.getCurrentUser();
+        //自動ログインのため保存されているaccess tokenを読み出す。tokenがあればログインできる
+        SharedPreferences pref = getSharedPreferences(getString(R.string.save_data_name), Context.MODE_PRIVATE);
+        String token = pref.getString(getString(R.string.save_token), "");//保存されていない時は""
+        //ログインしていない時はログインのactivityに遷移.SharedPreferencesが空の時もチェックしないとLogOutできない。
+        if(user == null || token == "") {
+            // Intent のインスタンスを取得する。getApplicationContext()でViewの自分のアクティビティーのコンテキストを取得。遷移先のアクティビティーを.classで指定
+            Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+            // 遷移先の画面を呼び出す
+            startActivity(intent);
+            //戻れないようにActivityを終了します。
+            finish();
+        }
+
         //メイン画面のレイアウトをセットしています。ListView
         setContentView(R.layout.activity_main);
 
@@ -49,6 +69,7 @@ public class MainActivity extends ActionBarActivity {
         //jsonデータをサーバーから取得する通信機能です。Volleyの機能です。通信クラスのインスタンスを作成しているだけです。通信はまだしていません。
         JsonObjectRequest request = new JsonObjectRequest(
                 "http://gashfara.com/test/json.txt" ,//jsonデータが有るサーバーのURLを指定します。
+//                "/Users/hosakak86/Desktop/json.txt" ,
                 null,
                 //サーバー通信した結果、成功した時の処理をするクラスを作成しています。
                 new Response.Listener<JSONObject>() {

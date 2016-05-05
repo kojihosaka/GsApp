@@ -6,6 +6,7 @@ package com.example.hosakak86.gsapp;
 import android.app.Application;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.kii.cloud.storage.Kii;
 
 //Applicationクラスを継承extend（コピーみたいなもの）しています。Applicationの機能がそのまま使えます。{}までがクラスです。
 //これはクラスの定義です。このクラスを使うにはnewなどをしてインスタンス化（実態を作る）してから使います。
@@ -18,6 +19,9 @@ public class VolleyApplication extends Application {
     private RequestQueue mRequestQueue;
     //overrideは継承元のクラスApplicationの機能を引き継ぐのではなく上書きすることを宣言しています。
     //onCreateはアプリを起動した時にOSから呼び出される関数です。よく使います。
+
+
+
     @Override
     public void onCreate() {
         //superは親クラスです。ですのでApplicationです。このonCreate()関数を実行しています。overrideしていますが、親のonCreate()も実行しているわけです。
@@ -27,6 +31,8 @@ public class VolleyApplication extends Application {
         mRequestQueue = Volley.newRequestQueue(this);
         //自分自身のインスタンス（newなどでクラスを実体化したもの）を代入しています。
         sInstance = this;
+        //KiiCloudの初期化。Applicationクラスで実行してください。キーは自分の値にかえる。
+        Kii.initialize(getApplicationContext(), "4c7447d9", "a48cbb93ebc6f84059f0fbe7f2083acd", Kii.Site.JP, true);
     }
     //インスタンスを返す関数（メソッドです）。クラスの中にある変数はこのように関数を通じて返すようにするのが一般的です。
     //synchronizedは同時に動作すると不具合が起きるときに宣言します。Volleyの仕様です。
@@ -39,3 +45,4 @@ public class VolleyApplication extends Application {
         return mRequestQueue;
     }
 }
+
