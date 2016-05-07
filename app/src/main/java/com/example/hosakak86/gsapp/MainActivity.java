@@ -5,11 +5,21 @@ package com.example.hosakak86.gsapp;
         import android.content.Context;
         import android.content.Intent;
         import android.content.SharedPreferences;
+        import android.graphics.Color;
+        import android.net.Uri;
         import android.os.Bundle;
         import android.support.v7.app.ActionBarActivity;
+        import android.text.SpannableString;
+        import android.text.Spanned;
+        import android.text.method.LinkMovementMethod;
+        import android.text.style.ClickableSpan;
+        import android.text.style.URLSpan;
+        import android.view.Gravity;
         import android.view.Menu;
         import android.view.MenuItem;
+        import android.view.View;
         import android.widget.ListView;
+        import android.widget.TextView;
         import android.widget.Toast;
 
         import com.android.volley.Response;
@@ -22,7 +32,11 @@ package com.example.hosakak86.gsapp;
         import org.json.JSONObject;
 
         import java.util.ArrayList;
+        import java.util.HashMap;
         import java.util.List;
+        import java.util.Map;
+        import java.util.regex.Matcher;
+        import java.util.regex.Pattern;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -34,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         //KiiCloudでのログイン状態を取得します。nullの時はログインしていない。
         KiiUser user = KiiUser.getCurrentUser();
         //自動ログインのため保存されているaccess tokenを読み出す。tokenがあればログインできる
@@ -68,8 +82,8 @@ public class MainActivity extends ActionBarActivity {
     private void fetch() {
         //jsonデータをサーバーから取得する通信機能です。Volleyの機能です。通信クラスのインスタンスを作成しているだけです。通信はまだしていません。
         JsonObjectRequest request = new JsonObjectRequest(
-                "http://gashfara.com/test/json.txt" ,//jsonデータが有るサーバーのURLを指定します。
-//                "/Users/hosakak86/Desktop/json.txt" ,
+//                "http://gashfara.com/test/json.txt" ,//jsonデータが有るサーバーのURLを指定します。
+                "http://sbhosaka.sakura.ne.jp/json.txt" ,
                 null,
                 //サーバー通信した結果、成功した時の処理をするクラスを作成しています。
                 new Response.Listener<JSONObject>() {
@@ -121,6 +135,7 @@ public class MainActivity extends ActionBarActivity {
 
         return records;
     }
+
 
     //デフォルトで作成されたメニューの関数です。未使用。
     @Override
