@@ -2,7 +2,7 @@
   "messages": [
     {
       "imageUrl": "http://assets.chrisblunt.com/wp-content/uploads/2012/12/IMG_20120619_202506-e1356946615784.jpg",
-      "comment": "Hand Sunset: http://google.co.jp/"
+      "comment": "Hand Sunset: http://yahoo.co.jp/"
     },
     {
       "imageUrl": "http://assets.chrisblunt.com/wp-content/uploads/2010/01/PC280118.jpg",
@@ -10,11 +10,11 @@
     },
     {
       "imageUrl": "http://assets.chrisblunt.com/wp-content/uploads/2010/08/brew.jpg",
-      "comment": "Brew + Biscuit"
+      "comment": "Brew + Biscuit: http://mooone.co/"
     },
     {
       "imageUrl": "http://assets.chrisblunt.com/wp-content/uploads/2013/05/business_cards.jpg",
-      "comment": "2013 Business Cards"
+      "comment": "2013 Business Cards: http://yahoo.co.jp/"
     },
     {
       "imageUrl": "http://assets.chrisblunt.com/wp-content/uploads/2012/12/DSCF7504-copy-150x150.jpg",
