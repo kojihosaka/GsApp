@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".VolleyApplication"
@@ -12,21 +13,33 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <service android:name="com.kii.cloud.analytics.EventUploadService"/>
 
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".WebActivity"/>
-        <activity android:name=".UserActivity">
-        </activity>
+
+        <activity android:name=".WebActivity"></activity>
+        <activity android:name=".UserActivity"></activity>
+        <activity android:name=".PostActivity"></activity>
+
+        <activity
+            android:name="com.kii.cloud.storage.social.connector.KiiSocialNetworkConnectorLoginActivity"
+            android:label="@string/app_name" />
+        <activity android:name="com.facebook.LoginActivity" />
+
+        <meta-data android:value="@string/app_id" android:name="com.facebook.sdk.ApplicationId" />
+
+
     </application>
 
 </manifest>

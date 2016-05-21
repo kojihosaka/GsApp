@@ -50,7 +50,14 @@
         android:paddingTop="2dip"
         android:scrollHorizontally="true"
         android:singleLine="true"/>
-        
+
+        <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

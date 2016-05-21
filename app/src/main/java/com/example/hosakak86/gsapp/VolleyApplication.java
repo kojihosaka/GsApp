@@ -20,8 +20,6 @@ public class VolleyApplication extends Application {
     //overrideは継承元のクラスApplicationの機能を引き継ぐのではなく上書きすることを宣言しています。
     //onCreateはアプリを起動した時にOSから呼び出される関数です。よく使います。
 
-
-
     @Override
     public void onCreate() {
         //superは親クラスです。ですのでApplicationです。このonCreate()関数を実行しています。overrideしていますが、親のonCreate()も実行しているわけです。

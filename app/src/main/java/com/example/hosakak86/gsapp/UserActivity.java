@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.view.Menu;
@@ -20,7 +21,7 @@ import com.kii.cloud.storage.callback.KiiUserCallBack;
 import com.kii.cloud.storage.exception.CloudExecutionException;
 
 
-public class UserActivity extends ActionBarActivity {
+public class UserActivity extends AppCompatActivity {
     //入力するビューです。
     private EditText mUsernameField;
     private EditText mPasswordField;
@@ -173,12 +174,12 @@ showAlert(R.string.operation_failed, e.getLocalizedMessage(), null);
 };
 
 //メニュー関係：未使用
-//@Override
-//public boolean onCreateOptionsMenu(Menu menu) {
-//// Inflate the menu; this adds items to the action bar if it is present.
-//getMenuInflater().inflate(R.menu.menu_user, menu);
-//return true;
-//}
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+// Inflate the menu; this adds items to the action bar if it is present.
+getMenuInflater().inflate(R.menu.menu_user, menu);
+return true;
+}
 
 @Override
 public boolean onOptionsItemSelected(MenuItem item) {

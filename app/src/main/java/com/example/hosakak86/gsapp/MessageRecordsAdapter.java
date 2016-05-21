@@ -11,6 +11,7 @@ import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -124,9 +125,13 @@ public class MessageRecordsAdapter extends ArrayAdapter<MessageRecord> {
 
         String message = textView.getText().toString();
 
+//        TextView textView = new TextView(context);
+//        textView.setAutoLinkMask(Linkify.WEB_URLS);
+//        textView.setText("http://www.yahoo.co.jp/");
+
         // リンク化対象の文字列、リンク先 URL を指定する
         Map<String, String> map = new HashMap<String, String>();
-        map.put("Hand", "http://google.com/");
+        map.put("hand", "http://google.com/");
 
         // SpannableString の取得
         SpannableString ss = createSpannableString(message, map);
