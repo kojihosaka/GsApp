@@ -158,8 +158,10 @@ public class MainActivity extends AppCompatActivity {
                             String id = obj.getString("_id", "");
                             String title = obj.getString("comment", "");
                             String url = obj.getString("imageUrl", "");
+                            int goodCount = obj.getInt("goodCount", 0);
                             //MessageRecordを新しく作ります。
-                            MessageRecord record = new MessageRecord(id, url, title);
+
+                            MessageRecord record = new MessageRecord(id, url, title, goodCount);
                             //MessageRecordの配列に追加します。
                             records.add(record);
                         }
@@ -299,45 +301,45 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == KiiSocialNetworkConnector.REQUEST_CODE) {
-//            Kii.socialConnect(KiiSocialConnect.SocialNetwork.SOCIALNETWORK_CONNECTOR).respondAuthOnActivityResult(
-//                    requestCode,
-//                    resultCode,
-//                    data);
-//        }
-//
-////        Activity activity = this.getActivity();
-//        Activity activity = this;
-//        KiiSocialConnect connect = Kii.socialConnect(KiiSocialConnect.SocialNetwork.SOCIALNETWORK_CONNECTOR);
-//
-//        Bundle options = new Bundle();
-//        options.putParcelable(KiiSocialNetworkConnector.PROVIDER, KiiSocialNetworkConnector.Provider.FACEBOOK);
-//
-//        // Login.
-//        connect.logIn(activity, options, new KiiSocialCallBack() {
-//            @Override
-//            public void onLoginCompleted(KiiSocialConnect.SocialNetwork network, KiiUser user, Exception exception) {
-//                if (exception != null) {
-//                    // Error handling
-//                    return;
-//                }
-//            }
-//        });
-//
-//        connect = Kii.socialConnect(KiiSocialConnect.SocialNetwork.SOCIALNETWORK_CONNECTOR);
-//        Bundle b = connect.getAccessTokenBundle();
-//
-//        // The access token.
-//        String accessToken = b.getString("oauth_token");
-//
-//        // User id provided by the social network provider.
-//        String providerUserId = b.getString("provider_user_id");
-//
-//        // If a new Kii user is created with the logIn method.
-//        boolean kiiNewUser = b.getBoolean("kii_new_user");
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == KiiSocialNetworkConnector.REQUEST_CODE) {
+            Kii.socialConnect(KiiSocialConnect.SocialNetwork.SOCIALNETWORK_CONNECTOR).respondAuthOnActivityResult(
+                    requestCode,
+                    resultCode,
+                    data);
+        }
+
+//        Activity activity = this.getActivity();
+        Activity activity = this;
+        KiiSocialConnect connect = Kii.socialConnect(KiiSocialConnect.SocialNetwork.SOCIALNETWORK_CONNECTOR);
+
+        Bundle options = new Bundle();
+        options.putParcelable(KiiSocialNetworkConnector.PROVIDER, KiiSocialNetworkConnector.Provider.FACEBOOK);
+
+        // Login.
+        connect.logIn(activity, options, new KiiSocialCallBack() {
+            @Override
+            public void onLoginCompleted(KiiSocialConnect.SocialNetwork network, KiiUser user, Exception exception) {
+                if (exception != null) {
+                    // Error handling
+                    return;
+                }
+            }
+        });
+
+        connect = Kii.socialConnect(KiiSocialConnect.SocialNetwork.SOCIALNETWORK_CONNECTOR);
+        Bundle b = connect.getAccessTokenBundle();
+
+        // The access token.
+        String accessToken = b.getString("oauth_token");
+
+        // User id provided by the social network provider.
+        String providerUserId = b.getString("provider_user_id");
+
+        // If a new Kii user is created with the logIn method.
+        boolean kiiNewUser = b.getBoolean("kii_new_user");
+    }
     //----------------------------------------------------------------------------------------------
 
 //    @Override

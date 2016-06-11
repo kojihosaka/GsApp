@@ -20,4 +20,9 @@
     <string name="post_button">Post</string>
     <string name="no_data_message">No Data</string>
 
+    <string name="good">いいね</string>
+    <string name="good_done">いいねしました</string>
+
+    <string name="facebook_app_id">921388881307263</string>
+
 </resources>
